@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t jbvance/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true jbvance/docker-react npm run test
